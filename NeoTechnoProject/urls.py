@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from NeoTechnoProject.database_init import load_clients_to_db, load_trans_to_db
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('load-clients/', load_clients_to_db),
+    path('load-trans/', load_trans_to_db)
 ]
