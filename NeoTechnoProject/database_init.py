@@ -1,6 +1,6 @@
 import pandas as pd
 from django.http import JsonResponse
-from NeoTechnoProject.models import Client, Transaction
+from NeoTechnoProject.models import Client, Transaction, Users
 from django.db import IntegrityError
 
 '''
@@ -73,4 +73,11 @@ def load_trans_to_db(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
+
+def add_users(request):
+    user = Users(name="John Doe", email="john@example.com", role="admin")
+    user.set_password("123")  # Hash the password
+    user.save()
+
+    return JsonResponse({'message': f'Successfully inserted user.'}, status=200)
 
