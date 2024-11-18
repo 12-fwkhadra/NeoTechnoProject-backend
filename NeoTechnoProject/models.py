@@ -100,9 +100,16 @@ class BlacklistToken(models.Model):
     updated_at = models.DateTimeField(auto_now=True)  # Automatically set to the current time when the record is updated
 
     def __init__(self, token, *args, **kwargs):
-        # We can set the blacklisted_on time to now when a token is created
-        self.blacklisted_on = datetime.datetime.now()
+        # If the blacklisted_on field is not explicitly set, set it to the current time
+        if 'blacklisted_on' not in kwargs:
+            kwargs['blacklisted_on'] = datetime.datetime.now()
         super().__init__(token=token, *args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        # Ensure the blacklisted_on field is set before saving
+        if not self.blacklisted_on:
+            self.blacklisted_on = datetime.datetime.now()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'<id: {self.id}, token: {self.token}>'

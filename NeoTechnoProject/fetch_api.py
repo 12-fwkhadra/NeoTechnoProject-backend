@@ -1,5 +1,7 @@
-from decimal import Decimal
+from datetime import datetime
+from decimal import Decimal, ROUND_DOWN
 
+from dateutil.parser import parser
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
@@ -87,16 +89,29 @@ def get_Clients(request):
 
         return JsonResponse({'clients': clients_data, 'total_pages': paginator.num_pages, 'total': paginator.count, 'per_page': per_page, 'page': page})
 
-def get_trans_per_clients(self, request):
+def get_trans_per_clients(request, cid):
         auth_response = authenticate_user(request)
 
         # If authentication failed, return the error response
         if isinstance(auth_response, JsonResponse):
             return auth_response  # Return the JsonResponse from the authenticate_user function
 
-        cid = request.GET.get('cid')
+        date_range = request.GET.get('dateRange', None)
+        trans_per_clients = Transaction.objects.filter(client_id=cid).order_by('transaction_id')
 
-        trans_per_clients = Transaction.objects.filter(client_id=cid)
+        if date_range != 'null':
+            date_range = date_range.replace('{','').replace('}','')
+            start_date, end_date = date_range.split(',')
+
+            start_date = datetime.strptime(start_date, '%d/%m/%Y').date()  # Directly get date object
+            end_date = datetime.strptime(end_date, '%d/%m/%Y').date()
+
+            start_date = start_date.strftime('%Y-%m-%d')
+
+            end_date = end_date.strftime('%Y-%m-%d')
+
+            trans_per_clients = trans_per_clients.filter(transaction_date__gte=start_date, transaction_date__lte=end_date).order_by('transaction_id')
+
         page = request.GET.get('page', 1)
         per_page = request.GET.get('per_page', 100)
         paginator = Paginator(trans_per_clients, per_page)
@@ -111,7 +126,7 @@ def get_trans_per_clients(self, request):
                 'amount': t.amount,
                 'currency': t.currency,
                 'rate': rate,
-                'in_usd': amount
+                'in_usd': amount.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
             }
             trans_data.append(t_data)
 

@@ -29,7 +29,7 @@ urlpatterns = [
     path('auth/status/', AdminAPI.as_view(), name='admin_api'),
     path('auth/logout/', LogoutAPI.as_view(), name='logout_api'),
     path('clients/', get_Clients),
-    path('clients/<int:id>/', get_trans_per_clients),
+    path('clients/<int:cid>/', get_trans_per_clients),
     path('countries/', get_countries),
     path('clients/export/', export_Clients),
 ]

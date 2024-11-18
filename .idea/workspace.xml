@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8541630-d0e2-417f-9d66-5dc2ce136f28" name="Changes" comment="jwt/auth configuration and users table">
-      <change afterPath="$PROJECT_DIR$/NeoTechnoProject/auth.py" afterDir="false" />
+    <list default="true" id="b8541630-d0e2-417f-9d66-5dc2ce136f28" name="Changes" comment="import logic updated, models updated, fetch apis added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeoTechnoProject/database_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/database_init.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeoTechnoProject/fetch_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/fetch_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeoTechnoProject/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeoTechnoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeoTechnoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,23 +46,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Django Server.NeoTechnoProject.executor": "Run",
-    "Python.data_generator.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/ahmad_3f41tde/Desktop/NeoProject-frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Django Server.NeoTechnoProject.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_generator.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ahmad_3f41tde/Desktop/NeoProject-frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Django Server.NeoTechnoProject">
     <configuration name="data_generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NeoTechnoProject" />
@@ -142,7 +139,7 @@
       <workItem from="1731676112167" duration="10036000" />
       <workItem from="1731735656104" duration="18601000" />
       <workItem from="1731867431886" duration="6193000" />
-      <workItem from="1731901946200" duration="15011000" />
+      <workItem from="1731901946200" duration="23299000" />
     </task>
     <task id="LOCAL-00001" summary="ETL process: define postgreSQl tables, extract data, load to DB">
       <option name="closed" value="true" />
@@ -160,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731684280699</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="import logic updated, models updated, fetch apis added">
+      <option name="closed" value="true" />
+      <created>1731922845309</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731922845309</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +185,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ETL process: define postgreSQl tables, extract data, load to DB" />
     <MESSAGE value="jwt/auth configuration and users table" />
-    <option name="LAST_COMMIT_MESSAGE" value="jwt/auth configuration and users table" />
+    <MESSAGE value="import logic updated, models updated, fetch apis added" />
+    <option name="LAST_COMMIT_MESSAGE" value="import logic updated, models updated, fetch apis added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NeoTechnoProject$data_generator.coverage" NAME="data_generator Coverage Results" MODIFIED="1731604740222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeoTechnoProject" />
