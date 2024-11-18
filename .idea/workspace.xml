@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8541630-d0e2-417f-9d66-5dc2ce136f28" name="Changes" comment="import logic updated, models updated, fetch apis added">
+    <list default="true" id="b8541630-d0e2-417f-9d66-5dc2ce136f28" name="Changes" comment="view single client">
+      <change afterPath="$PROJECT_DIR$/NeoTechnoProject/post_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeoTechnoProject/fetch_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/fetch_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NeoTechnoProject/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NeoTechnoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeoTechnoProject/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +139,7 @@
       <workItem from="1731676112167" duration="10036000" />
       <workItem from="1731735656104" duration="18601000" />
       <workItem from="1731867431886" duration="6193000" />
-      <workItem from="1731901946200" duration="23299000" />
+      <workItem from="1731901946200" duration="27834000" />
     </task>
     <task id="LOCAL-00001" summary="ETL process: define postgreSQl tables, extract data, load to DB">
       <option name="closed" value="true" />
@@ -165,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731922845309</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="view single client">
+      <option name="closed" value="true" />
+      <created>1731953479539</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731953479539</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +194,8 @@
     <MESSAGE value="ETL process: define postgreSQl tables, extract data, load to DB" />
     <MESSAGE value="jwt/auth configuration and users table" />
     <MESSAGE value="import logic updated, models updated, fetch apis added" />
-    <option name="LAST_COMMIT_MESSAGE" value="import logic updated, models updated, fetch apis added" />
+    <MESSAGE value="view single client" />
+    <option name="LAST_COMMIT_MESSAGE" value="view single client" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NeoTechnoProject$data_generator.coverage" NAME="data_generator Coverage Results" MODIFIED="1731604740222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NeoTechnoProject" />

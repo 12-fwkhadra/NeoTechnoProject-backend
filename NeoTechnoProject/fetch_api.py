@@ -154,6 +154,15 @@ def get_countries(request):
     countries = Client.objects.all().values('country').distinct()
     return JsonResponse({'countries': list(countries)})
 
+def get_currencies(request):
+    auth_response = authenticate_user(request)
+
+    # If authentication failed, return the error response
+    if isinstance(auth_response, JsonResponse):
+        return auth_response  # Return the JsonResponse from the authenticate_user function
+
+    currency = Transaction.objects.all().values('currency').distinct()
+    return JsonResponse({'currency': list(currency)})
 
 def export_Clients(request):
     auth_response = authenticate_user(request)
