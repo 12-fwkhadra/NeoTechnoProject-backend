@@ -27,10 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# settings.py
+APPEND_SLASH = False
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'api',
@@ -44,14 +47,42 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'OPTIONS',  # Ensure OPTIONS (preflight request) is allowed
+]
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'portal'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:4200',  # Add frontend origin for CSRF
+]
+
+# Disable CSRF checks for API requests (useful for token-based authentication)
+CSRF_COOKIE_SECURE = False  # If you're using HTTP for local dev
 
 ROOT_URLCONF = 'NeoTechnoProject.urls'
 
@@ -81,7 +112,7 @@ WSGI_APPLICATION = 'NeoTechnoProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myDatabase',
+        'NAME': 'myDB',
         'USER': 'root',
         'PASSWORD': 'root@123',
         'HOST': 'localhost',  # or your PostgreSQL host
@@ -132,13 +163,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
@@ -146,4 +178,31 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(days=30),
     'SLIDING_TOKEN_REFRESH_LIFETIME_LATE_USER': timedelta(days=1),
     'SLIDING_TOKEN_LIFETIME_LATE_USER': timedelta(days=30),
+}
+
+# settings.py
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',  # Set the level to DEBUG to capture all levels of logs
+            'class': 'logging.FileHandler',
+            'filename': 'app.log',  # Path to the log file
+            'formatter': 'verbose',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s - %(levelname)s - %(message)s',  # Log format
+        },
+    },
+    'loggers': {
+        'app_logger': {
+            'handlers': ['file'],  # Use the file handler defined above
+            'level': 'DEBUG',  # Set the logging level to DEBUG
+            'propagate': True,  # Propagate the logs to the root logger
+        },
+    },
 }

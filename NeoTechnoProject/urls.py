@@ -16,13 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from NeoTechnoProject.database_init import load_clients_to_db, load_trans_to_db, add_users
-from NeoTechnoProject.fetch_api import Home
+
+from NeoTechnoProject.auth import LoginAPI, AdminAPI, LogoutAPI
+from NeoTechnoProject.database_init import data_init, update_Clients
+from NeoTechnoProject.fetch_api import get_Clients, get_countries, export_Clients, get_trans_per_clients
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('load-clients/', load_clients_to_db),
-    path('load-trans/', load_trans_to_db),
-    path('add-user/', add_users),
-    path('', Home.as_view())
+    path('load-data/', data_init),
+    path('update-db/', update_Clients),
+    path('auth/login/', LoginAPI.as_view(), name='login_api'),
+    path('auth/status/', AdminAPI.as_view(), name='admin_api'),
+    path('auth/logout/', LogoutAPI.as_view(), name='logout_api'),
+    path('clients/', get_Clients),
+    path('clients/<int:id>/', get_trans_per_clients),
+    path('countries/', get_countries),
+    path('clients/export/', export_Clients),
 ]
