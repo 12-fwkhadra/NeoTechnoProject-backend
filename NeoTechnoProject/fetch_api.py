@@ -10,9 +10,10 @@ import logging
 
 from django.utils.dateformat import DateFormat
 
+from NeoTechnoProject.database_init import trans_calculator
 from NeoTechnoProject.models import Client, Users, Transaction, decode_auth_token
 
-app_logger = logging.getLogger('django')
+app_logger = logging.getLogger('app_logger')
 
 def authenticate_user(request):
     token = request.headers.get('Authorization')
@@ -230,3 +231,35 @@ def write_to_excel(clients, excel_filename):
 
         workbook.close()
 
+def delete_transaction(request, tid):
+
+    if tid:
+        try:
+            # Get the record to delete
+            transaction = Transaction.objects.get(transaction_id=tid)
+            c = Client.objects.filter(client_id=transaction.client_id).first()
+
+            if c:
+                c.trans_count = int(c.trans_count) -1
+                buy_sum, sell_sum = trans_calculator([transaction])
+
+                c.buy_sum -= buy_sum
+                c.sell_sum -= abs(sell_sum)
+
+                c.save()
+            else:
+                # Handle the case where no client is found for the given client_id
+                app_logger.error(f"Client with client_id {transaction.client_id} not found when deleting transaction.")
+                return JsonResponse({
+                    'message': f"Failed to delete transaction of no client",
+                    'class': 'error'
+                })
+            # Delete the record
+            transaction.delete()
+            app_logger.info(f"Transaction {tid} for client {c.client_id} deleted.")
+            return JsonResponse({'class': 'success', "message": "Transaction deleted successfully"})
+
+        except Transaction.DoesNotExist:
+            return JsonResponse({"class": "error", "message": "Transaction not found"})
+    else:
+        return JsonResponse({"class": "error", "message": "No Transaction ID provided"})

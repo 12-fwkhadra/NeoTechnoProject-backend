@@ -1,4 +1,5 @@
 import json
+import logging
 import traceback
 from datetime import datetime
 from decimal import Decimal
@@ -9,6 +10,7 @@ from NeoTechnoProject.database_init import trans_calculator
 from NeoTechnoProject.fetch_api import authenticate_user, app_logger
 from NeoTechnoProject.models import Transaction, Client
 
+app_logger = logging.getLogger('app_logger')
 
 def add_transaction(request):
 

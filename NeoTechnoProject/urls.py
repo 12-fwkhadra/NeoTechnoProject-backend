@@ -19,7 +19,8 @@ from django.urls import path
 
 from NeoTechnoProject.auth import LoginAPI, AdminAPI, LogoutAPI
 from NeoTechnoProject.database_init import data_init, update_Clients
-from NeoTechnoProject.fetch_api import get_Clients, get_countries, export_Clients, get_trans_per_clients, get_currencies
+from NeoTechnoProject.fetch_api import get_Clients, get_countries, export_Clients, get_trans_per_clients, \
+    get_currencies, delete_transaction
 from NeoTechnoProject.post_api import add_transaction
 
 urlpatterns = [
@@ -34,5 +35,6 @@ urlpatterns = [
     path('countries/', get_countries),
     path('currencies/', get_currencies),
     path('clients/export/', export_Clients),
+    path('transaction/delete/<int:tid>/', delete_transaction),
     path('add_tran/', add_transaction),
 ]
