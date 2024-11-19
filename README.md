@@ -1,5 +1,5 @@
 This is the backend source code of the Neo Technology Challenge developed using django:
-###To run this application:
+To run this application:
 1. install python 10 or higher
 2. install the following packages:
   - asgiref==3.8.1
