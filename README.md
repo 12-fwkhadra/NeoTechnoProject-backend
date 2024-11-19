@@ -39,3 +39,4 @@ The project includes the following files:
 
 The application demonstrates only one role for admins. 
 
+This is a demo video of the application: https://www.loom.com/share/20ebcda89d4e4e12a04275c243e1bf34?sid=e4486d7f-a9fd-4c68-a886-4773b3cbadea 
